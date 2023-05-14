@@ -1,12 +1,9 @@
 import React from 'react';
-import Navbar from '../../../components/Navbar'
 import './Home.css';
 
 function Home() {
   return (
     <>
-      <Navbar />
-      
       <div className='container'>
         <div className='baseline'>
           <h1>Home page of SchoolPlatform !</h1>
