@@ -1,0 +1,23 @@
+.input-block {
+  display: grid;
+}
+
+.input-block input {
+  height: 2.5em;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.input-block .error {
+  border: 1px solid salmon;
+}
+
+.input-block .error-message-show {
+  color: red;
+  font-size: small;
+  text-align: left;
+}
+.input-block .error-message-hide {
+  display: none;
+}

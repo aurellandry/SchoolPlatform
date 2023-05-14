@@ -23,7 +23,7 @@ export default function Navbar() {
             >
                 <ul>
                     <li>
-                        <a href='/'>Login</a>
+                        <a href='/login'>Login</a>
                     </li>
                     <li>
                         <a href='/'>Register</a>
