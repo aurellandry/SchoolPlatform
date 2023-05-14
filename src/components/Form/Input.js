@@ -3,7 +3,8 @@ import './Input.css';
 
 export default function Input(props) {
     const [showError, setShowError] = useState(false);
-    const [placeholder, setPlaceholder] = useState('')
+    const [placeholder, setPlaceholder] = useState('');
+    const [errorMessage, setErrorMessage] = useState('This field is required !');
 
     useEffect(() => {
         if (props.placeholder) {
@@ -11,7 +12,14 @@ export default function Input(props) {
                 props.required ? `${props.placeholder}*` : props.placeholder
             );
         }
-    }, []);
+
+        if (props.error) {
+            setShowError(true)
+            setErrorMessage(props.error)
+        } else {
+            setErrorMessage('This field is required !');
+        }
+    }, [props.error, props.placeholder, props.required]);
     
 
     const handleInputChange = (e) => {
@@ -38,7 +46,7 @@ export default function Input(props) {
                 required={props.required}
             />
             <span className={showError ? 'error-message-show' : 'error-message-hide'}>
-                This field is required !
+                {errorMessage}
             </span>
         </div>
     );
