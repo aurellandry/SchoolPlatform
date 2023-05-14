@@ -26,7 +26,7 @@ export default function Navbar() {
                         <a href='/login'>Login</a>
                     </li>
                     <li>
-                        <a href='/'>Register</a>
+                        <a href='/register'>Register</a>
                     </li>
                     <li>
                         <a href='mailto:landrykengni@yahoo.com'>Contact</a>

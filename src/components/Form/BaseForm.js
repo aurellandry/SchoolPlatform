@@ -10,7 +10,7 @@ export default function BaseForm(props) {
     return (
         <div className='form-container'>
             <div className='form-wrapper'>
-                <h1>Sign In</h1>
+                <h1>{props.title}</h1>
                 <form method={props.method}>
                     {props.children}
 

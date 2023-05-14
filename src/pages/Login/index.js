@@ -12,14 +12,6 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleEmailChange = (value) => {
-        setEmail(value);
-    }
-
-    const handlePasswordChange = (value) => {
-        setPassword(value);
-    }
-
     const handleSubmit = () => {
         navigate('/');
     }
@@ -27,6 +19,7 @@ function Login() {
     return (
         <BaseForm
             method='POST'
+            title='Sign in'
             submitLabel='Login'
             onSubmit={handleSubmit}
         >
@@ -35,7 +28,7 @@ function Login() {
                 name={'email'}
                 placeholder={'Email'}
                 value={email}
-                onChange={handleEmailChange}
+                onChange={setEmail}
                 required={true}
             />
             <Input
@@ -43,7 +36,7 @@ function Login() {
                 name={'password'}
                 placeholder={'Password'}
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={setPassword}
                 required={true}
             />
         </BaseForm>
