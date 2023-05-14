@@ -1,0 +1,39 @@
+.form-container {
+  display: flex;
+  height: calc(100vh - 60px - 2.5em - 3rem);
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container .form-wrapper {
+  display: grid;
+  row-gap: 2em;
+  text-align: center;
+  height: 60%;
+  padding: 2em;
+  border: 1px solid #c5c7c9;
+  border-radius: 8px;
+  box-shadow: 0 0 5px black;
+}
+
+.form-container .form-wrapper form {
+  display: grid;
+  row-gap: 1.5em;
+}
+
+.form-container .form-wrapper form .submit-btn {
+  min-height: 2.5em;
+  border: 1px solid #283b8b;
+  background-color: #408eec;
+  border-radius: 8px;
+  padding: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1.5em;
+}
+
+@media screen and (min-width: 768px) {
+  .form-container .form-wrapper {
+    width: 35vw;
+  }
+}
