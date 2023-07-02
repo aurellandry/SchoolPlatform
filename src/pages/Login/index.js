@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import BaseForm from '../../components/Form/BaseForm';
 import Input from '../../components/Form/Input';
@@ -7,13 +8,21 @@ import Input from '../../components/Form/Input';
 import './Login.css';
 
 function Login() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // const [data, setData] = useState(null);
 
-    const handleSubmit = () => {
-        navigate('/');
+    const handleSubmit = async () => {
+        try {
+            const response = await axios.post('http://school-api.aurellandry.com/api/login');
+            console.log('Response : ', response);
+            // setData(response);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        // navigate('/');
     }
 
     return (

@@ -12,10 +12,10 @@ export default function BaseForm(props) {
         <div className='form-container'>
             <div className='form-wrapper'>
                 <h1>{props.title}</h1>
-                <form method={props.method}>
+                <form onSubmit={handleSubmit}>
                     {props.children}
 
-                    <Button class='submit-btn' type='submit' label={props.submitLabel} onClick={handleSubmit} />
+                    <Button class='submit-btn' type='submit' label={props.submitLabel} />
                 </form>
             </div>
         </div>
