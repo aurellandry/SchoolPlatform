@@ -1,0 +1,20 @@
+button {
+    min-height: 2.5em;
+    border: none;
+    background-color: #408eec;
+    border-radius: 8px;
+    padding: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #283b8b;
+}
+
+.btn-primary {
+    border: 1px solid #283b8b;
+    background-color: #408eec;
+}

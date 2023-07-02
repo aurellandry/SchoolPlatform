@@ -1,4 +1,5 @@
 import './BaseForm.css';
+import Button from './Button';
 
 export default function BaseForm(props) {
     const handleSubmit = (e) => {
@@ -14,7 +15,7 @@ export default function BaseForm(props) {
                 <form method={props.method}>
                     {props.children}
 
-                    <button className='submit-btn' type='submit' onClick={handleSubmit}>{props.submitLabel}</button>
+                    <Button class='submit-btn' type='submit' label={props.submitLabel} onClick={handleSubmit} />
                 </form>
             </div>
         </div>

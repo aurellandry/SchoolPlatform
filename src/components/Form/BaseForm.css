@@ -23,13 +23,6 @@
 }
 
 .form-container .form-wrapper form .submit-btn {
-  min-height: 2.5em;
-  border: 1px solid #283b8b;
-  background-color: #408eec;
-  border-radius: 8px;
-  padding: 8px;
-  font-weight: bold;
-  cursor: pointer;
   margin-top: 1.5em;
 }
 
