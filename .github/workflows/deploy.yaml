@@ -28,3 +28,14 @@ jobs:
           source: .
           target: /var/www/html/school-platform
 
+      - name: SSH into EC2 and run commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY_PATH }}
+          script: |
+            cd /var/www/html/school-platform
+            cp .env.prod .env
+            serve -s build </dev/null &>/dev/null &
+
