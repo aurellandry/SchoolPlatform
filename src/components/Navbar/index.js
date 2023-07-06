@@ -23,10 +23,10 @@ export default function Navbar() {
             >
                 <ul>
                     <li>
-                        <a href='/login'>Login</a>
+                        <a href='/login'>Connexion</a>
                     </li>
                     <li>
-                        <a href='/register'>Register</a>
+                        <a href='/register'>Inscription</a>
                     </li>
                     <li>
                         <a href='mailto:landrykengni@yahoo.com'>Contact</a>

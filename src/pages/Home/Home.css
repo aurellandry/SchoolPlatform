@@ -4,9 +4,15 @@
   margin-left: auto;
   padding: 1rem;
   height: calc(100vh - 60px - 2.5em - 3rem);
+  display: block;
+}
+
+.baseline {
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  margin-bottom: 5rem;
+  text-align: center;
 }
 
 .baseline h1 {
@@ -15,4 +21,15 @@
 
 article h1 {
   margin: 1rem 0;
+}
+
+.advantages {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 768px) {
+  .advantages {
+    flex-direction: column;
+  }
 }

@@ -1,0 +1,25 @@
+.color-dark-gray {
+  color: darkgray;
+}
+
+.advantage-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+.advantage-item img, .advantage-item h3 {
+  margin-bottom: 1em;
+}
+
+@media screen and (min-width: 768px) {
+  .advantage-item {
+    max-width: 16em;
+  }
+
+  .advantage-item img {
+    max-width: 120px;
+  }
+}
