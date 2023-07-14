@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../store/reducers/authSlice';
+import { login } from '../../store/reducers/userSlice';
 
 import BaseForm from '../../components/Form/BaseForm';
 import Input from '../../components/Form/Input';
@@ -16,24 +16,20 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const accessToken = useSelector((state) => state.auth.accessToken);
-    const refreshToken = useSelector((state) => state.auth.refreshToken);
+    // const refreshToken = useSelector((state) => state.auth.refreshToken);
+    const authErrorMsg = useSelector((state) => state.auth.error);
 
     useEffect(() => {
         if (accessToken) {
-            console.log('Access Token:', accessToken);
             navigate('/');
-        } else {
-          console.log('Access Token is not set');
         }
     }, [accessToken, navigate]);
 
     useEffect(() => {
-        if (refreshToken) {
-            console.log('Refresh Token:', refreshToken);
-        } else {
-          console.log('Refresh Token is not set');
+        if (authErrorMsg) {
+            console.log('Error Auth : ', authErrorMsg);
         }
-    }, [refreshToken]);
+    }, [authErrorMsg]);
 
     const handleSubmit = async () => {
         try {
@@ -51,6 +47,7 @@ function Login() {
             method='POST'
             title='Sign in'
             submitLabel='Login'
+            errors={authErrorMsg}
             onSubmit={handleSubmit}
         >
             <Input

@@ -26,6 +26,15 @@
   margin-top: 1.5em;
 }
 
+.errors {
+  padding: 0.5em 0;
+  font-weight: lighter;
+  /* border: 1px solid #afafaf; */
+  border-radius: 5px;
+  background-color: #ffa9a9;
+  color: #860808;
+}
+
 @media screen and (min-width: 768px) {
   .form-container .form-wrapper {
     width: 35vw;

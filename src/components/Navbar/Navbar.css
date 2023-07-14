@@ -39,7 +39,7 @@
   width: 100%;
 }
 .navigation-menu li a:hover {
-  color: #868484;
+  color: #ffffff;
 }
 
 .hamburger {
@@ -91,6 +91,7 @@
     text-align: center;
     margin: 0;
     border-bottom: 1px solid #afafaf;
+    background-color: #eceaea;
   }
   .navigation-menu li a {
     color: #283b8b;

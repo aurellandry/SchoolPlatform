@@ -12,6 +12,7 @@ export default function BaseForm(props) {
         <div className='form-container'>
             <div className='form-wrapper'>
                 <h1>{props.title}</h1>
+                { props.errors && <div className='errors'>{props.errors}</div> }
                 <form onSubmit={handleSubmit}>
                     {props.children}
 
