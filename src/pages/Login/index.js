@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../store/reducers/userSlice';
+import { login } from '../../store/reducers/authSlice';
 
 import BaseForm from '../../components/Form/BaseForm';
-import Input from '../../components/Form/Input';
+import Input from '../../components/Form/Input/Input';
 
 import './Login.css';
 
@@ -17,6 +16,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const accessToken = useSelector((state) => state.auth.accessToken);
     // const refreshToken = useSelector((state) => state.auth.refreshToken);
+    const isLoading = useSelector((state) => state.auth.loading);
     const authErrorMsg = useSelector((state) => state.auth.error);
 
     useEffect(() => {
@@ -45,10 +45,11 @@ function Login() {
     return (
         <BaseForm
             method='POST'
-            title='Sign in'
-            submitLabel='Login'
+            title='Connexion'
+            submitLabel="Se connecter"
             errors={authErrorMsg}
             onSubmit={handleSubmit}
+            isLoading={isLoading}
         >
             <Input
                 type={'email'}
@@ -61,7 +62,7 @@ function Login() {
             <Input
                 type={'password'}
                 name={'password'}
-                placeholder={'Password'}
+                placeholder={'Mot de passe'}
                 value={password}
                 onChange={setPassword}
                 required={true}

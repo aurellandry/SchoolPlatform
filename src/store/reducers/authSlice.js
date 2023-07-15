@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const login = createAsyncThunk('user/login', async (payload) => {
+export const login = createAsyncThunk('auth/login', async (payload) => {
     try {
         const response = await axios.post(
             `${process.env.REACT_APP_BASE_API_URL}/api/login`,
@@ -21,7 +21,7 @@ export const login = createAsyncThunk('user/login', async (payload) => {
     }
 });
 
-export const logout = createAsyncThunk('user/logout', async (accessToken) => {
+export const logout = createAsyncThunk('auth/logout', async (accessToken) => {
     try {
         await axios.post(
             `${process.env.REACT_APP_BASE_API_URL}/api/logout`,
@@ -38,7 +38,7 @@ export const logout = createAsyncThunk('user/logout', async (accessToken) => {
     }
 });
 
-export const register = createAsyncThunk('user/register', async (payload) => {
+export const register = createAsyncThunk('auth/register', async (payload) => {
     try {
         await axios.post(
             `${process.env.REACT_APP_BASE_API_URL}/api/register`,
@@ -61,8 +61,8 @@ const initialState = {
     error: null,
 };
 
-const userSlice = createSlice({
-    name: 'user',
+const authSlice = createSlice({
+    name: 'auth',
     initialState,
     reducers: {
         setAccessToken: (state, action) => {
@@ -121,6 +121,6 @@ const userSlice = createSlice({
       },
 });
 
-export const { setAccessToken, setRefreshToken } = userSlice.actions;
+export const { setAccessToken, setRefreshToken } = authSlice.actions;
 
-export default userSlice.reducer;
+export default authSlice.reducer;

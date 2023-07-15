@@ -18,3 +18,6 @@ button:hover {
     border: 1px solid #283b8b;
     background-color: #408eec;
 }
+.btn-disabled {
+    cursor: wait;
+}

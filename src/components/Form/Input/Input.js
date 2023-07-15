@@ -4,7 +4,7 @@ import './Input.css';
 export default function Input(props) {
     const [showError, setShowError] = useState(false);
     const [placeholder, setPlaceholder] = useState('');
-    const [errorMessage, setErrorMessage] = useState('This field is required !');
+    const [errorMessage, setErrorMessage] = useState(null);
 
     useEffect(() => {
         if (props.placeholder) {
@@ -17,7 +17,7 @@ export default function Input(props) {
             setShowError(true)
             setErrorMessage(props.error)
         } else {
-            setErrorMessage('This field is required !');
+            setErrorMessage('Veuillez renseigner une valeur.');
         }
     }, [props.error, props.placeholder, props.required]);
     
@@ -26,7 +26,6 @@ export default function Input(props) {
         const inputValue = e.target.value;
 
         if (props.required && !inputValue) {
-            console.log('Field should not be empty')
             setShowError(true)
         } else {
             setShowError(false)

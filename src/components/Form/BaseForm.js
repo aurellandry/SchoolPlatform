@@ -1,11 +1,15 @@
 import './BaseForm.css';
-import Button from './Button';
+import Button from './Button/Button';
 
 export default function BaseForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        props.onSubmit();
+        if (!props.isLoading) {
+            props.onSubmit();
+        } else {
+            alert('Formulaire déjà soumis ! Veuillez patienter...')
+        }
     }
 
     return (
@@ -16,7 +20,12 @@ export default function BaseForm(props) {
                 <form onSubmit={handleSubmit}>
                     {props.children}
 
-                    <Button class='submit-btn' type='submit' label={props.submitLabel} />
+                    <Button
+                        class='submit-btn'
+                        type='submit'
+                        label={props.submitLabel}
+                        isLoading={props.isLoading}
+                    />
                 </form>
             </div>
         </div>

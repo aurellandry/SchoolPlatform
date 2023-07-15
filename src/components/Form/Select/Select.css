@@ -1,0 +1,22 @@
+.select-block {
+  display: grid;
+}
+
+.select-block select {
+  height: 2.5em;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.select-block .error-message-show {
+  color: red;
+  font-size: small;
+  text-align: left;
+}
+.select-block .error-message-hide {
+  display: none;
+}
+
+.select-block .error {
+  border: 1px solid salmon;
+}
