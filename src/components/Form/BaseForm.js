@@ -1,5 +1,6 @@
 import './BaseForm.css';
 import Button from './Button/Button';
+import Alert from '@mui/material/Alert';
 
 export default function BaseForm(props) {
     const handleSubmit = (e) => {
@@ -16,7 +17,7 @@ export default function BaseForm(props) {
         <div className='form-container'>
             <div className='form-wrapper'>
                 <h1>{props.title}</h1>
-                { props.errors && <div className='errors'>{props.errors}</div> }
+                { props.errors && <Alert severity="error">{props.errors}</Alert> }
                 <form onSubmit={handleSubmit}>
                     {props.children}
 

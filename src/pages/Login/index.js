@@ -14,22 +14,15 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const accessToken = useSelector((state) => state.auth.accessToken);
-    // const refreshToken = useSelector((state) => state.auth.refreshToken);
+    const currentUser = useSelector((state) => state.auth.user);
     const isLoading = useSelector((state) => state.auth.loading);
     const authErrorMsg = useSelector((state) => state.auth.error);
 
     useEffect(() => {
-        if (accessToken) {
+        if (currentUser) {
             navigate('/');
         }
-    }, [accessToken, navigate]);
-
-    useEffect(() => {
-        if (authErrorMsg) {
-            console.log('Error Auth : ', authErrorMsg);
-        }
-    }, [authErrorMsg]);
+    }, [currentUser, navigate]);
 
     const handleSubmit = async () => {
         try {

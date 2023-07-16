@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { decodeJWT } from '../../services/JWTDecoder';
 
 export const login = createAsyncThunk('auth/login', async (payload) => {
     try {
@@ -14,8 +15,17 @@ export const login = createAsyncThunk('auth/login', async (payload) => {
         );
 
         const { token, refresh_token } = response.data;
+        const decodedToken = decodeJWT(token);
+        const user = { 
+            ...decodedToken.user,
+            roles: decodedToken.roles,
+            access_token: token,
+            refresh_token,
+            exp: decodedToken.exp,
+            iat: decodedToken.iat
+        };
 
-        return { accessToken: token, refreshToken: refresh_token };
+        return { user };
     } catch (error) {
         throw new Error(error.response?.data.message ?? 'Error while authenticating user');
     }
@@ -23,7 +33,7 @@ export const login = createAsyncThunk('auth/login', async (payload) => {
 
 export const logout = createAsyncThunk('auth/logout', async (accessToken) => {
     try {
-        await axios.post(
+        const response = await axios.post(
             `${process.env.REACT_APP_BASE_API_URL}/api/logout`,
             {},
             {
@@ -38,25 +48,8 @@ export const logout = createAsyncThunk('auth/logout', async (accessToken) => {
     }
 });
 
-export const register = createAsyncThunk('auth/register', async (payload) => {
-    try {
-        await axios.post(
-            `${process.env.REACT_APP_BASE_API_URL}/api/register`,
-            payload,
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        );
-    } catch (error) {
-        throw new Error(error.response?.data.message ?? 'Error while registering user');
-    }
-});
-
 const initialState = {
-    accessToken: null,
-    refreshToken: null,
+    user: null,
     loading: false,
     error: null,
 };
@@ -79,10 +72,9 @@ const authSlice = createSlice({
                 state.error = null;
             })
             .addCase(login.fulfilled, (state, action) => {
+                state.user = action.payload.user;
                 state.loading = false;
                 state.error = null;
-                state.accessToken = action.payload.accessToken;
-                state.refreshToken = action.payload.refreshToken;
             })
             .addCase(login.rejected, (state, action) => {
                 state.loading = false;
@@ -97,24 +89,9 @@ const authSlice = createSlice({
             .addCase(logout.fulfilled, (state) => {
                 state.loading = false;
                 state.error = null;
-                state.accessToken = null;
-                state.refreshToken = null;
+                state.user = null
             })
             .addCase(logout.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.error.message;
-            });
-
-        builder
-            .addCase(register.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-            })
-            .addCase(register.fulfilled, (state) => {
-                state.loading = false;
-                state.error = null;
-            })
-            .addCase(register.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             });
