@@ -33,7 +33,7 @@ export const login = createAsyncThunk('auth/login', async (payload) => {
 
 export const logout = createAsyncThunk('auth/logout', async (accessToken) => {
     try {
-        const response = await axios.post(
+        await axios.post(
             `${process.env.REACT_APP_BASE_API_URL}/api/logout`,
             {},
             {

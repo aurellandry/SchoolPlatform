@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/reducers/authSlice';
 import ThreeBars from './ThreeBars';
@@ -23,7 +23,7 @@ export default function Navbar() {
     const showContactModal = () => {
         setOpenContactModal(true);
     }
-    const hideContactModal = () => {
+    const closeContactModal = () => {
         setOpenContactModal(false);
     }
 
@@ -53,7 +53,7 @@ export default function Navbar() {
                                 <a href='/register'>Inscription</a>
                             </li>
                             <li>
-                                <a href='#' onClick={showContactModal}>Contact</a>
+                                <a href={void(0)} onClick={showContactModal}>Contact</a>
                             </li>
                         </ul>
                     )
@@ -68,14 +68,17 @@ export default function Navbar() {
                                 {user.first_name} {user.last_name}
                             </li>
                             <li>
-                                <a href='#' onClick={handleLogout}>Déconnexion</a>
+                                <a href={void(0)} onClick={handleLogout}>Déconnexion</a>
                             </li>
                         </ul>
                     )
                 }
             </div>
 
-            <ContactModal open={openContactModal} handleClose={hideContactModal} />
+            <ContactModal
+                open={openContactModal}
+                close={closeContactModal}
+            />
         </nav>
     )
 }

@@ -6,7 +6,7 @@ import BaseForm from '../../components/Form/BaseForm';
 import Input from '../../components/Form/Input/Input';
 import Select from '../../components/Form/Select';
 
-import { register } from '../../store/reducers/registerSlice';
+// import { register } from '../../store/reducers/registerSlice';
 
 import './Register.css'
 
@@ -28,8 +28,8 @@ export default function Register() {
 
     // const navigate = useNavigate();
 
-    const user = useSelector((state) => state.register.user);
-    const error = useSelector((state) => state.register.error);
+    /* const user = useSelector((state) => state.register.user);
+    const error = useSelector((state) => state.register.error); */
     const isLoading = useSelector((state) => state.register.loading);
 
     const [firstName, setFirstName] = useState('');
