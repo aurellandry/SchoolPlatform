@@ -53,7 +53,7 @@ export default function Navbar() {
                                 <a href='/register'>Inscription</a>
                             </li>
                             <li>
-                                <a href={void(0)} onClick={showContactModal}>Contact</a>
+                                <button onClick={showContactModal}>Contact</button>
                             </li>
                         </ul>
                     )
@@ -68,7 +68,7 @@ export default function Navbar() {
                                 {user.first_name} {user.last_name}
                             </li>
                             <li>
-                                <a href={void(0)} onClick={handleLogout}>Déconnexion</a>
+                                <button onClick={handleLogout}>Déconnexion</button>
                             </li>
                         </ul>
                     )
